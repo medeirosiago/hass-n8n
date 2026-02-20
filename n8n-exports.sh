@@ -4,7 +4,7 @@ export N8N_PERSONALIZATION_ENABLED=false
 export N8N_VERSION_NOTIFICATIONS_ENABLED=false
 export N8N_RUNNERS_ENABLED=true
 export N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
-export N8N_PROXY_HOPS=1
+export N8N_PROXY_HOPS=2
 
 CONFIG_PATH="/data/options.json"
 export GENERIC_TIMEZONE="$(jq --raw-output '.timezone // empty' $CONFIG_PATH)"
