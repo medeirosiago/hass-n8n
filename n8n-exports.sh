@@ -4,6 +4,7 @@ export N8N_PERSONALIZATION_ENABLED=false
 export N8N_VERSION_NOTIFICATIONS_ENABLED=false
 export N8N_RUNNERS_ENABLED=true
 export N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+export N8N_PROXY_HOPS=1
 
 CONFIG_PATH="/data/options.json"
 export GENERIC_TIMEZONE="$(jq --raw-output '.timezone // empty' $CONFIG_PATH)"
@@ -61,7 +62,7 @@ ADDON_INFO=$(curl -s -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" http://super
 ADDON_INFO=${ADDON_INFO:-'{}'}
 echo "Fetched Add-on Info from Supervisor: ${ADDON_INFO}"
 
-INGRESS_PATH=$(echo "$ADDON_INFO" | jq -r '.data.ingress_url // "/"')
+export INGRESS_PATH=$(echo "$ADDON_INFO" | jq -r '.data.ingress_url // "/"')
 echo "Extracted Ingress Path from Supervisor: ${INGRESS_PATH}"
 
 # Get the port from the configuration
